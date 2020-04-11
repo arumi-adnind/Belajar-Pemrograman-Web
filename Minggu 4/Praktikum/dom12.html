@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>dom12</title>
+</head>
+
+<body>
+<h2>JavaScript HTML DOM!</h2>
+<p><b>Hello World!</b></p>
+<p><b>Hello Norway!</b></p>
+<p><b>Click the button to change the color of all p elements.</b></p>
+<button onclick="myFunction()">Try it</button>
+
+<script>
+	function myFunction() {
+	    var myNodelist = document.querySelectorAll("p");
+	    var i;
+	    for (i = 0; i < myNodelist.length; i++) {
+	        myNodelist[i].style.color = "coral";
+	    }
+	}
+</script>
+</body>
+
+</html>

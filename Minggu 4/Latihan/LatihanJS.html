@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<title>LatihanJS</title>
+</head>
+
+<body>
+<div class="container my-5">
+	<div class="dropdown mb-3">
+		<h1><center>DATA MAHASISWA</center></h1>
+		<hr>
+		<label for="nim"><b>NIM : </b></label>
+		<select id="nim_mhs" onclick="pilihNim()">
+			<option value="">Pilih NIM </option>
+			<option value="Muh. Amin">A11.2015.12345</option>
+			<option value="Santoso">A11.2015.12346</option>
+			<option value="Sutrisno">A11.2015.12347</option>
+		</select>
+	</div>
+	
+	<form>
+		<div class="form-group">
+			<label><b>Nama : </b></label>
+			<input type="text" disabled class="form-control" id="nama_mhs" placeholder="Nama akan muncul otomatis">
+		</div>
+		<div class="form-group">
+			<label><b>Nilai Tugas : </b></label>
+			<input type="number" class="form-control" id="nil_tgs" min='0' max='100' placeholder="0-100">
+		</div>
+		<div class="form-group">
+			<label><b>Nilai UTS : </b></label>
+			<input type="number" class="form-control" id="nil_uts" min='0' max='100' placeholder="0-100">
+		</div>
+		<div class="form-group">
+			<label><b>Nilai UAS : </b></label>
+			<input type="number" class="form-control" id="nil_uas" min='0' max='100' placeholder="0-100">
+		</div>
+		<div class="form-group">
+			<label><b>Nilai Akhir : </b></label>
+			<input type="text" disabled class="form-control" id="nil_akhir" placeholder="Simpan untuk melihat Nilai Akhir">
+		</div>
+		<button type="submit" onclick=" return hitungNilaiAkhir()"><b>SIMPAN</b></button>
+	</form>
+	<p class="mt-4" id="table"></p>
+</div>
+
+<script>
+	let data = {}; //global
+	
+	const pilihNim = () =>
+	{
+		//memberikan nilai dari DOM
+		const valueNimMHS = document.getElementById('nim_mhs').selectedIndex;
+		const namaMHS = document.getElementsByTagName("option") [valueNimMHS].value;
+		const valueNamaMHS = document.getElementById('nama_mhs')
+		
+		//set value namaMHS ke input
+		valueNamaMHS.value = namaMHS;
+		
+		//push ke object data
+		data.nama = valueNamaMHS.value;
+		if (valueNamaMHS.value === "Muh. Amin")
+		{
+			return data.nim = "A11.2015.12345"
+		}
+		else if (valueNamaMHS.value === "Santoso")
+		{
+			return data.nim = "A11.2015.12346"
+		}
+		else
+		{
+			return data.nim = "A11.2015.12347"
+		}
+	}
+	
+	const hitungNilaiAkhir = () => 
+	{
+		//ambil nilai dari DOM
+		const nilaiTugas = document.getElementById('nil_tgs');
+		const nilaiUTS = document.getElementById('nil_uts');
+		const nilaiUAS = document.getElementById('nil_uas');
+		const nilaiAkhir = document.getElementById('nil_akhir');
+		
+		//set value
+		let valueNilaiTugas = nilaiTugas.value;
+		let valueNilaiUTS = nilaiUTS.value;
+		let valueNilaiUAS = nilaiUAS.value;
+		
+		//menghitung nilai akhir
+		let hasil = (0.4 * valueNilaiTugas) + (0.3 * valueNilaiUTS) + (0.3 * valueNilaiUAS);
+		
+		//menampilkan nilai akhir ke label
+		nilaiAkhir.value = hasil;
+		
+		//push ke object data
+		data.hasil = hasil;
+		
+		//menampilkan data
+		const table = document.getElementById('table');
+		table.innerHTML =
+			`<table class="table">
+				<thead>
+				<tr>
+					<th scope="col">NIM</th>
+					<th scope="col">Nama</th>
+					<th scope="col">Nilai Akhir</th>
+					<th scope="col">Status</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>${data.nim}</td>
+					<td>${data.nama}</td>
+					<td>${data.hasil}</td>
+					<td>${hasil > 60 ? 'LULUS' : 'TIDAK LULUS'}</td>
+				</tr>
+				</tbody>
+			</table>`
+		return false;
+	}
+</script>
+</body>
+
+</html>
