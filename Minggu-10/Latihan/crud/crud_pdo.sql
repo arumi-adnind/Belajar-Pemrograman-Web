@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2020 at 06:32 PM
+-- Generation Time: May 25, 2020 at 10:14 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -40,7 +40,9 @@ CREATE TABLE `sekolah` (
 --
 
 INSERT INTO `sekolah` (`id`, `nama`, `alamat`, `logo`) VALUES
-(1, 'SMA Negeri 2 Pemalang', 'Jl. Jend. Sudirman No.14, Pakis Aji, Wanarejan Utara, Kec. Taman, Kabupaten Pemalang, Jawa Tengah 52361', 'SMAN 2 PML.jpg');
+(1, 'SMA Negeri 2 Pemalang', 'Jl. Jend. Sudirman No.14, Pakis Aji, Wanarejan Utara, Kec. Taman, Kabupaten Pemalang, Jawa Tengah 52361', 'SMAN 2 PML.jpg'),
+(2, 'SMA Negeri 1 Pemalang', 'Jl. Gatot Subroto, Bojongbata, Kec. Pemalang, Kabupaten Pemalang, Jawa Tengah 52319', 'SMA N 1 PML.png'),
+(4, 'SMA Negeri 3 Pemalang', 'Jl. Mochtar No.2, Kebondalem, Kec. Pemalang, Kabupaten Pemalang, Jawa Tengah 52312', 'SMA N 3 PML.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `sekolah`
 --
 ALTER TABLE `sekolah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
